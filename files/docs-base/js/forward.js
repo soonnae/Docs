@@ -25,7 +25,7 @@ const versions = {"en":"v265"};
         var timer = 4;
         const itvMove = setInterval((function moveTimer() {
             --timer;
-            const link = `<a href=${JSON.stringify(location.href.replace(oldHost, newHost))}>${location.origin.replace(oldHost, newHost)}</a>`;
+            const link = `<a href=${JSON.stringify(location.href.replace(oldHost, newHost))}>${encodeURIComponent(location.origin.replace(oldHost, newHost))}</a>`;
             div.innerHTML = `<big>This site permanently moved to ${link}. Please update links accordingly.</big>`
 
             if (timer > 0) {
