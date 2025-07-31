@@ -1,5 +1,5 @@
-
 const fs = require("fs");
+const path = require("path");
 
 const opt = { strip: false, navs: false, save: false, pathtypes: false, scopes: /** @type {string[]} */ ([]), base: false, lang: "en", names: false };
 
@@ -9,12 +9,12 @@ const conf = JSON.parse(fs.readFileSync('conf.json', 'utf8'));
 const regHide = RegExp(conf.regHide);
 
 function OnStart() {
-    const curDir = baseDir + opt.lang + "/";
+    const curDir = path.join(baseDir, opt.lang, "/");
     for (const v of fs.readdirSync(curDir)) {
         for (const s of opt.scopes) {
-            checkObj(curDir + `${v}/${s}/obj.json`);
-            if (opt.base) checkObj(curDir + `${v}/${s}/base.json`);
-            if (opt.navs) checkNav(curDir + `${v}/${s}/navs.json`);
+            checkObj(path.join(curDir, `${v}/${s}/obj.json`));
+            if (opt.base) checkObj(path.join(curDir, `${v}/${s}/base.json`));
+            if (opt.navs) checkNav(path.join(curDir, `${v}/${s}/navs.json`));
         }
     }
 }
