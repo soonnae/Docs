@@ -1,4 +1,3 @@
-
 var baseFolder = "/sdcard/DroidScript/.edit/docs/";
 var extDocsFolder = baseFolder + "external/";
 var pluginFolder = baseFolder + "plugins/"; //app.GetPrivateFolder( "Plugins" );
@@ -40,6 +39,9 @@ setTheme(curTheme ? curTheme[1] : getCookie("dsDocsTheme", "dark"));
 
 //Hook into cross frame messaging
 window.addEventListener("message", function (event) {
+	// Validate the origin of the message
+	if (event.origin !== "https://trusted-origin.com") return;
+
 	console.log("msg: " + event)
 	if (typeof event.data != "string") return;
 	var params = event.data.split("|");
