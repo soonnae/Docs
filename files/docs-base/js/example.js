@@ -1,4 +1,3 @@
-
 // window.onload = function() { if(!isDS && !isAndroid) hidecopy(); }
 
 // Remove 'Copy' buttons on PC.
@@ -32,7 +31,7 @@ function demo(id) {
 	}
 	else {
 		var cmd = curMode == "py" ? "demo:python:" : "demo:";
-		parent.postMessage(cmd + code, "*")
+		parent.postMessage(cmd + code, "https://trusted-origin.com")
 	}
 }
 
@@ -40,7 +39,7 @@ function run(file) {
 	if (isMobileIDE)
 		app.Execute("RunDemo( \"" + file + "\" );");
 	else
-		parent.postMessage("run:" + file, "*");
+		parent.postMessage("run:" + file, "https://trusted-origin.com");
 }
 
 function copyToClipboard(text) {
