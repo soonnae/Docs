@@ -1,4 +1,3 @@
-
 var baseFolder = "/sdcard/DroidScript/.edit/docs/";
 var extDocsFolder = baseFolder + "external/";
 var pluginFolder = baseFolder + "plugins/"; //app.GetPrivateFolder( "Plugins" );
@@ -136,8 +135,8 @@ $(document).live('pageshow', function (event, ui) {
 
 		//Ask parent for DS adddress
 		if (!isMobileIDE) {
-			parent.postMessage("getaddress:", "*")
-			setTimeout(function () { parent.postMessage("getaddress:", "*") }, 3000) //<-- needed for first time load.
+			parent.postMessage("getaddress:", location.origin)
+			setTimeout(function () { parent.postMessage("getaddress:", location.origin) }, 3000) //<-- needed for first time load.
 		}
 	}
 	//catch( e ) {}

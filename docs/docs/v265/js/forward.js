@@ -25,8 +25,12 @@ const versions = {"en":"v265"};
         var timer = 4;
         const itvMove = setInterval((function moveTimer() {
             --timer;
-            const link = `<a href=${JSON.stringify(location.href.replace(oldHost, newHost))}>${location.origin.replace(oldHost, newHost)}</a>`;
-            div.innerHTML = `<big>This site permanently moved to ${link}. Please update links accordingly.</big>`
+            const link = document.createElement('a');
+            link.href = location.href.replace(oldHost, newHost);
+            link.textContent = location.origin.replace(oldHost, newHost);
+            div.innerHTML = `<big>This site permanently moved to </big>`;
+            div.appendChild(link);
+            div.innerHTML += `<big>. Please update links accordingly.</big>`
 
             if (timer > 0) {
                 div.innerHTML += `\n<br><big>You are being forwarded automatically in ${timer}...</big> <a id="stay" href="#">[stay here]</div>`;
